@@ -1,0 +1,13 @@
+# Phiên bản single-stage chưa tối ưu: dùng base image Debian đầy đủ
+FROM node:18
+
+WORKDIR /app
+
+# Sao chép toàn bộ mã nguồn rồi cài thư viện trong cùng một giai đoạn
+COPY . .
+RUN npm install
+
+ENV PORT=3000
+EXPOSE 3000
+
+CMD ["node", "server.js"]
